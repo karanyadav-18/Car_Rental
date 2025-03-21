@@ -12,7 +12,7 @@
     <div class="flex">
         <aside class="w-64 bg-white h-screen p-5 shadow-lg">
             <div class="flex items-center space-x-2 text-xl font-bold">
-                <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" class="w-8" />
+                <img src="logo.png" class="w-8" />
                 <span>CarRental</span>
             </div>
             <nav class="mt-10">
