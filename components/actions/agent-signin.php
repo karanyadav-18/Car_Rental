@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 0);
 error_reporting(E_ALL);
 
-include("../inc/connect.php");
+include("../common/connect.php");
 
 if (isset($_POST['submit'])) {
     $userId = mysqli_real_escape_string($conn, $_POST['admin_email']);
@@ -29,6 +29,6 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('Incorrect email address.'); window.location = 'http://localhost/car-rental-agency/agent_login.php';</script>";
         exit();
-    *}
+    }
 }
 ?>
