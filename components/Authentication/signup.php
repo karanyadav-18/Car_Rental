@@ -6,7 +6,9 @@
     <title>Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<?php include '../common/navbar.php' ?>
+<body>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <div class="relative w-full h-40 bg-black rounded-lg flex items-center justify-center">
             <h2 class="text-xl font-bold text-white">Create Account</h2>
@@ -44,7 +46,8 @@
             </div>
             <button type="submit" class="w-full p-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Create Account</button>
         </form>
-        <p class="text-center text-gray-600">Already have an account? <a href="login.php" class="text-blue-600">Sign in</a></p>
+        <p class="text-center text-gray-600">Already have an account? <a href="./login.php" class="text-blue-600">Sign in</a></p>
+    </div>
     </div>
 </body>
-</html>
+</html>1

@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+$loggedIn = isset($_SESSION['user']); // check if user is logged in
 ?>
 
 <!DOCTYPE html>
@@ -16,14 +17,25 @@ if (session_status() === PHP_SESSION_NONE) {
     
 <!-- Sidebar -->
     <?php include 'components/common/sidebar.php'; ?>
+    
     <!-- Main Content -->
     <div class="flex-1 p-6">
         <!-- Search Bar -->
         <div class="flex items-center justify-between mb-6">
             <input type="text" placeholder="Search for cars..." class="p-3 w-80 border rounded-lg shadow-sm">
             <div class="flex items-center space-x-4">
-                <img src="https://cdn-icons-png.flaticon.com/512/3602/3602123.png" class="w-6">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-8 rounded-full bg-gray-300 p-1">
+                
+                <!-- User Section -->
+                <div class="flex items-center space-x-4">
+                    <?php if ($loggedIn): ?>
+                        <!-- Display User Logo after Login -->
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-8 rounded-full bg-gray-300 p-1" />
+                    <?php else: ?>
+                        <!-- Display Login and Signup buttons when not logged in -->
+                        <a href="components/Authentication/login.php" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md shadow-md transition duration-300">Login</a>
+                        <a href="components/Authentication/signup.php" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md shadow-md transition duration-300">Sign Up</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 

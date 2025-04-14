@@ -6,11 +6,13 @@
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body>
+<?php include '../common/navbar.php' ?>
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="relative">
-            <img src="your-image.jpg" alt="Car Background" class="w-full h-40 object-cover">
-            <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-semibold">Welcome Back</h2>
+            <img src="../images/car1.jpg" alt="Car Background" class="w-full h-40 object-cover">
+            <!-- <h2 class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl font-semibold">Welcome Back</h2> -->
         </div>
         <form action="../actions/login_action.php" method="POST" class="p-6">
             <div class="mb-4">
@@ -39,6 +41,7 @@
             </div>
             <p class="text-sm text-center text-gray-600 mt-4">Don't have an account? <a href="signup.php" class="text-blue-600">Sign up</a></p>
         </form>
+    </div>
     </div>
 </body>
 </html>
