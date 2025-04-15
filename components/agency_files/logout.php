@@ -1,5 +1,9 @@
 <?php
 session_start();
-if (session_destroy()) {
-    header("location: ../index.php?message=You Have Been Logout Out. If It Was A Mistake Than Click On Sign In Button Again.");
-}
+session_unset(); // Clear all session variables
+session_destroy(); // Destroy the session
+
+// Redirect to the dashboard after logout
+header("Location: index.php?message=You have been logged out successfully");
+exit;
+?>

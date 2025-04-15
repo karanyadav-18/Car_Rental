@@ -3,7 +3,7 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 0);
 error_reporting(E_ALL);
 
-include("../inc/connect.php");
+include("../common/connect.php");
 
 if (isset($_POST['edit_id2'])) {
     $edit_id = $_POST["edit_id2"];
@@ -16,6 +16,6 @@ if (isset($_POST['edit_id2'])) {
     $qry2 = mysqli_query($conn, $sql2);
     if ($qry2) {
 
-        header('location:available.php');
+        header('location:dashboard.php');
     }
 }
