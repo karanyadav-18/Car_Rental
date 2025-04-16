@@ -22,6 +22,23 @@ VALUES
 (5, 'Test', 'Testing', 'test@gmail.com', '12345', '9867543', 'test123'),
 (6, 'test', 'test', 'test@gmail.com', '12345', '09999999999', '43214321');
 
+-- Create agents table (added fix)
+CREATE TABLE `agents` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(255) UNIQUE NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    `company` VARCHAR(255) NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Insert sample data into agents (for testing)
+INSERT INTO `agents` (`id`, `name`, `email`, `password`, `company`) 
+VALUES 
+(1, 'Sajeed Ansari', 'saj@gmail.com', '12345', 'Code OS'),
+(2, 'Testing User', 'test@company.com', 'password', 'Test Company');
+
 -- Create booked_car table
 CREATE TABLE `booked_car` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -50,16 +67,20 @@ CREATE TABLE `cars` (
     `car_number` VARCHAR(255) NOT NULL,
     `seats` INT NOT NULL,
     `rent` DECIMAL(10, 2) NOT NULL,
-    PRIMARY KEY (`id`)
+    `status` ENUM('Available', 'Rented') NOT NULL DEFAULT 'Available',  -- Track car status
+    `rental_start_date` DATE DEFAULT NULL,  -- Track rental start date
+    `rental_end_date` DATE DEFAULT NULL,    -- Track rental end date
+    `total_earnings` DECIMAL(10, 2) DEFAULT 0.00,  -- Track total earnings from this car
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`agent_id`) REFERENCES `agents`(`id`)  -- Foreign key relation with agents table
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Insert data into cars
-INSERT INTO `cars` (`id`, `agent_id`, `image`, `model`, `car_number`, `seats`, `rent`) 
-VALUES 
-(5, 4, 'hundai1.avif', 'Hundai', 'MH 43 BF 6786', 7, 4000.00),
-(6, 4, 'maruti2.jpg', 'Maruti', 'MH 43 BF 0786', 6, 4500.00),
-(7, 5, 'hundai2.avif', 'Hundai', 'MH 43 TE 8769', 5, 2000.00),
-(8, 5, 'cardummy.jpeg', 'test', '1234', 3, 1111.00);
+INSERT INTO `cars` (`agent_id`, `image`, `model`, `car_number`, `seats`, `rent`, `status`, `rental_start_date`, `rental_end_date`, `total_earnings`) 
+VALUES
+(1, 'car1.jpg', 'Toyota Corolla', 'ABC1234', 5, 2000.00, 'Available', NULL, NULL, 0.00),
+(1, 'car2.jpg', 'Honda Civic', 'XYZ5678', 4, 2500.00, 'Available', NULL, NULL, 0.00),
+(1, 'car3.jpg', 'Ford Focus', 'MNO1122', 5, 1800.00, 'Rented', '2025-04-01', '2025-04-10', 18000.00);
 
 -- Create customer table
 CREATE TABLE `customer` (
@@ -80,5 +101,20 @@ VALUES
 (6, 'test', 'testing@gmail.com', '12345', '8674532'),
 (7, 'Kalim khan', 'kalim@gmail.com', 'kalim@1234', '87654457879'),
 (8, 'rest', 'rest@gmail.com', '12345', '8765432190');
+
+-- Create rentals table
+CREATE TABLE `rentals` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `car_id` INT NOT NULL,
+    `agent_id` INT NOT NULL,
+    `customer_name` VARCHAR(100) NOT NULL,
+    `rent_date` DATE NOT NULL,
+    `return_date` DATE,
+    `total_amount` DECIMAL(10,2),
+    `status` ENUM('Rented', 'Returned') DEFAULT 'Rented',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`car_id`) REFERENCES `cars`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`agent_id`) REFERENCES `agents`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 COMMIT;
