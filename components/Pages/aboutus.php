@@ -9,19 +9,23 @@
 <body class="bg-white text-gray-800">
 <?php include '../common/navbar.php' ?>
   <!-- About Us Section -->
-  <section class="bg-gray-100 py-10">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
-      <div class="w-20 h-1 bg-blue-600 mx-auto mb-6 rounded-full"></div>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        Welcome to our trusted car rental platform – your reliable companion for smooth, safe, and budget-friendly travel.
-        Established with the goal of making your journey effortless, our founder <span class="font-semibold text-gray-800">Mohammed Murghay</span> has brought together a team committed to customer satisfaction and convenience.
-        <br><br>
-        Whether you're planning a business trip or a weekend getaway, our fleet has the perfect car for every occasion. Need help? We’re just an email away at 
-        <a href="mailto:info@carrental.com" class="text-blue-500 underline">info@carrental.com</a>.
-      </p>
-    </div>
-  </section>
+  <section class="relative bg-cover bg-center bg-no-repeat py-8 text-white" style="background-image: url('../images/about.jpg');">
+  <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay with 50% opacity -->
+  
+  <div class="relative max-w-5xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-4">Who We Are</h2>
+    <div class="w-20 h-1 bg-blue-400 mx-auto mb-6 rounded-full"></div>
+    <p class="text-lg leading-relaxed">
+      Welcome to our trusted car rental platform – your reliable companion for smooth, safe, and budget-friendly travel.
+      Established with the goal of making your journey effortless, our founder <span class="font-semibold">Mohammed Murghay</span> has brought together a team committed to customer satisfaction and convenience.
+      <br><br>
+      Whether you're planning a business trip or a weekend getaway, our fleet has the perfect car for every occasion. Need help? We’re just an email away at 
+      <a href="mailto:info@carrental.com" class="text-blue-300 underline">info@carrental.com</a>.
+    </p>
+  </div>
+</section>
+
+
 
   <!-- Features / Stats Section -->
   <section class="bg-white py-16">
