@@ -16,9 +16,10 @@ if (isset($_POST['submit'])) {
   if ($row) {
     $_SESSION['name'] = $row['name'];
     $_SESSION['id'] = $row['id'];
-    header('location:../index.php');
+    $_SESSION['user'] = true; // 👈 add this line
+    header('location:../../index.php');
   } else {
-    header('location:../index.php?message=Invalid Username Or Password');
+    header('location:../../index.php');
   }
 }
 ?>

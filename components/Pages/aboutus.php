@@ -1,5 +1,5 @@
 <?php
-include('inc/header.php');
+include('common/navbar.php');
 ?>
 <div>
     <h2 class="mt-3 pt-4 text-center fw-bold h-font ">About Us</h2>

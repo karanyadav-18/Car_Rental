@@ -3,7 +3,7 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
-include("../inc/connect.php");
+include("../common/connect.php");
 
 $name1 = $_POST["name1"];
 $name2 = $_POST["name2"];
