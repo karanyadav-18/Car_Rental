@@ -39,11 +39,11 @@ $loggedIn = isset($_SESSION['user']); // check if user is logged in
         <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png" class="w-5 mr-2">
         Home
       </a>
-      <a href="/availableCars.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
+      <a href="./components/Pages/cars.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/741/741407.png" class="w-5 mr-2">
         Available Cars
       </a>
-      <a href="/about.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
+      <a href="./components/Pages/aboutus.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" class="w-5 mr-2">
         About Us
       </a>
