@@ -13,15 +13,15 @@ $loggedIn = isset($_SESSION['user']); // check if user is logged in
   <nav class="mt-4 space-y-2">
     <?php if ($loggedIn): ?>
       <!-- Logged-in Sidebar -->
-      <a href="/dashboard" class="flex items-center p-3 text-blue-600 bg-gray-100 rounded-lg">
+      <a href="./dashboard" class="flex items-center p-3 text-blue-600 bg-gray-100 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/9292/9292669.png" class="w-5 mr-2">
         Dashboard
       </a>
-      <a href="/components/Pages/booking.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
+      <a href="./components/Pages/booking.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" class="w-5 mr-2">
         Bookings
       </a>
-      <a href="/components/Pages/customer.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
+      <a href="./components/Pages/customer.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-5 mr-2">
         Customers
       </a>
@@ -29,7 +29,7 @@ $loggedIn = isset($_SESSION['user']); // check if user is logged in
         <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="w-5 mr-2">
         Payments
       </a>
-      <a href="/components/Pages/settings.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
+      <a href="./components/Pages/settings.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
         <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" class="w-5 mr-2">
         Settings
       </a>
