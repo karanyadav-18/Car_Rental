@@ -1,8 +1,8 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$loggedIn = isset($_SESSION['user']); // check if user is logged in
+$loggedIn = isset($_SESSION['user']);
 ?>
 
 <!DOCTYPE html>
@@ -14,24 +14,25 @@ $loggedIn = isset($_SESSION['user']); // check if user is logged in
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
-    
-<!-- Sidebar -->
+
+<!-- Wrap sidebar and content in a flex container -->
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
     <?php include 'components/common/sidebar.php'; ?>
-    
+
     <!-- Main Content -->
     <div class="flex-1 p-6">
+
         <!-- Search Bar -->
         <div class="flex items-center justify-between mb-6">
             <input type="text" placeholder="Search for cars..." class="p-3 w-80 border rounded-lg shadow-sm">
             <div class="flex items-center space-x-4">
-                
                 <!-- User Section -->
                 <div class="flex items-center space-x-4">
                     <?php if ($loggedIn): ?>
-                        <!-- Display User Logo after Login -->
                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-8 rounded-full bg-gray-300 p-1" />
                     <?php else: ?>
-                        <!-- Display Login and Signup buttons when not logged in -->
                         <a href="components/Authentication/login.php" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md shadow-md transition duration-300">Login</a>
                         <a href="components/Authentication/signup.php" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md shadow-md transition duration-300">Sign Up</a>
                     <?php endif; ?>
@@ -101,6 +102,9 @@ $loggedIn = isset($_SESSION['user']); // check if user is logged in
                 <a href="components/Authentication/login.php" class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 mt-3 rounded-lg text-center">Rent Now</a>
             </div>
         </div>
+
     </div>
+</div>
+
 </body>
 </html>
