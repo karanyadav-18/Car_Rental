@@ -1,25 +1,24 @@
 <?php
 session_start();
-ini_set('display_errors', 0);
-ini_set('log_errors', 0);
-error_reporting(E_ALL);
-
 include("../common/connect.php");
 
 if (isset($_POST['submit'])) {
-  $userId = $_POST['email'];
-  $password = $_POST['password'];
+  $email = trim(strtolower($_POST['email']));
+  $password = trim($_POST['password']);
 
-  $sql = "select * from customer where email_id='$userId' and password='$password'";
+  $sql = "SELECT * FROM customer WHERE LOWER(email_id) = '$email' AND password = '$password'";
   $qry = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($qry);
+
   if ($row) {
     $_SESSION['name'] = $row['name'];
     $_SESSION['id'] = $row['id'];
-    $_SESSION['user'] = true; // 👈 add this line
+    $_SESSION['user'] = true;
     header('location:../../index.php');
+    exit();
   } else {
-    header('location:../../index.php');
+    header('location:../../index.php?error=1');
+    exit();
   }
 }
 ?>
