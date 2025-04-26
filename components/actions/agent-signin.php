@@ -23,11 +23,11 @@ if (isset($_POST['submit'])) {
             echo "<script>window.location = '../agency_files/dashboard.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Incorrect password.'); window.location = 'http://localhost/car-rental-agency/agent_login.php';</script>";
+            echo "<script>alert('Incorrect password.'); window.location = '../Pages/agent_login.php';</script>";
             exit();
         }
     } else {
-        echo "<script>alert('Incorrect email address.'); window.location = 'http://localhost/car-rental-agency/agent_login.php';</script>";
+        echo "<script>alert('Incorrect email address.'); window.location = '../Pages/agent_login.php';</script>";
         exit();
     }
 }
