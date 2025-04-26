@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("common/connect.php");
+include("../common/connect.php");
 
 if (isset($_REQUEST['id'])) {
     $id1 = $_POST['id'];
