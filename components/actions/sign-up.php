@@ -25,9 +25,9 @@ if (!preg_match('/^[0-9]{10}$/', $number)) {
     exit();
 }
 
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+// $hashedPassword = $password;
 
-$sql = "INSERT INTO customer(name, email_id, mobile, password) VALUES ('$name', '$email', '$number', '$hashedPassword')";
+$sql = "INSERT INTO customer(name, email_id, mobile, password) VALUES ('$name', '$email', '$number', '$password')";
 
 $qry = mysqli_query($conn, $sql);
 

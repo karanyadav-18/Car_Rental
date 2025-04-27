@@ -85,7 +85,7 @@ $loggedIn = isset($_SESSION['user']);
                 <h3 class="text-lg font-bold mt-3">Tesla Model 3</h3>
                 <p class="text-gray-600 text-sm">🚗 5 seats 📍 New York</p>
                 <p class="text-xl font-bold mt-2">$89/day</p>
-                <a href="<?php echo $loggedIn ? '.components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
+                <a href="<?php echo $loggedIn ? 'components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
                    class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 mt-3 rounded-lg text-center">
                    Rent Now
                 </a>
@@ -95,7 +95,7 @@ $loggedIn = isset($_SESSION['user']);
                 <h3 class="text-lg font-bold mt-3">BMW X5</h3>
                 <p class="text-gray-600 text-sm">🚗 7 seats 📍 Los Angeles</p>
                 <p class="text-xl font-bold mt-2">$120/day</p>
-                <a href="<?php echo $loggedIn ? '.components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
+                <a href="<?php echo $loggedIn ? 'components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
                    class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 mt-3 rounded-lg text-center">
                    Rent Now
                 </a>
@@ -105,7 +105,7 @@ $loggedIn = isset($_SESSION['user']);
                 <h3 class="text-lg font-bold mt-3">Mercedes C-Class</h3>
                 <p class="text-gray-600 text-sm">🚗 5 seats 📍 Chicago</p>
                 <p class="text-xl font-bold mt-2">$95/day</p>
-                <a href="<?php echo $loggedIn ? '.components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
+                <a href="<?php echo $loggedIn ? 'components/Pages/booking.php' : 'components/Authentication/login.php'; ?>" 
                    class="block w-full bg-blue-600 hover:bg-blue-700 text-white py-2 mt-3 rounded-lg text-center">
                    Rent Now
                 </a>
