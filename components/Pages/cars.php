@@ -28,7 +28,7 @@ include('../common/connect.php');
     ?>
     <div class="bg-white shadow-md rounded-lg overflow-hidden p-5 grid md:grid-cols-3 gap-6">
       <div class="col-span-1">
-        <img src="../../images/<?php echo $row['image']; ?>" alt="Car Image" class="w-full h-52 object-cover rounded">
+        <img src="../uploads/<?php echo $row['image']; ?>" alt="Car Image" class="w-full h-52 object-cover rounded">
       </div>
       <div class="col-span-1 flex flex-col justify-between">
         <div>
