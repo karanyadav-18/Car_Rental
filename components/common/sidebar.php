@@ -1,67 +1,76 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-$loggedIn = isset($_SESSION['user']);
-?>
-
-<!-- Sidebar -->
-<div class="flex">
-<aside class="w-64 bg-white h-screen p-5 shadow-lg relative">
-  <div class="flex items-center space-x-2 text-xl font-bold mb-6">
-    <img src="/Car_Rental/images/logo.png" class="w-8" />
-    <span>CarRental</span>
+<!-- Navbar -->
+<nav class="flex items-center justify-between px-8 py-4 bg-white shadow-md">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2 text-2xl font-bold text-blue-600">
+    <marquee behavior="" direction="right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car w-8 h-8 text-blue-800"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></marquee>
+    <h1 class="text-xl font-bold">CarRental</h1>
   </div>
 
-  <nav class="mt-4 space-y-2">
+  <!-- Links -->
+  <div class="flex space-x-8 items-center">
     <?php if ($loggedIn): ?>
-      <!-- Logged-in Sidebar -->
-      <a href="./components/Pages/dashboard.php" class="flex items-center p-3 text-blue-600 bg-gray-100 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/9292/9292669.png" class="w-5 mr-2">
-        Dashboard
+      <a href="./components/Pages/dashboard.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Dashboard</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/booking.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" class="w-5 mr-2">
-        Bookings
+      <a href="./components/Pages/booking.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Bookings</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <!-- ❌ Customers section removed -->
-      <a href="./components/Pages/payment.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="w-5 mr-2">
-        Payments
+      <a href="./components/Pages/payment.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Payments</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/settings.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" class="w-5 mr-2">
-        Settings
+      <a href="./components/Pages/settings.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Settings</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
     <?php else: ?>
-      <!-- Guest Sidebar -->
-      <a href="./index.php" class="flex items-center p-3 text-blue-600 bg-gray-100 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png" class="w-5 mr-2">
-        Home
+      <a href="./index.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Home</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/cars.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/741/741407.png" class="w-5 mr-2">
-        Available Cars
+      <a href="./components/Pages/cars.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Available Cars</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/aboutus.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" class="w-5 mr-2">
-        About Us
+      <a href="./components/Pages/aboutus.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">About Us</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/agent_login.php" class="flex items-center p-3 text-gray-700 hover:bg-gray-200 rounded-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-5 mr-2">
-        Agent Login
+      <a href="./components/Pages/agent_login.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Agent Login</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
     <?php endif; ?>
-  </nav>
+  </div>
 
-  <!-- Logout Button -->
-  <?php if ($loggedIn): ?>
-    <div class="absolute bottom-5 left-5 right-5">
-      <a href="./components/Pages/logout.php" class="flex items-center justify-center p-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828479.png" class="w-5 mr-2">
-        Logout
-      </a>
-    </div>
-  <?php endif; ?>
-</aside>
-</div>
+  <!-- Right Side (Login/Signup OR User Profile) -->
+  <div class="relative">
+    <?php if (!$loggedIn): ?>
+      <div class="flex space-x-4">
+        <a href="./components/Authentication/login.php" class="bg-gradient-to-r from-[#B64870] to-[#4E0080] rounded-[8px] font-bold text-white px-5 py-2 hover:opacity-90 transition transform hover:scale-105">
+          Login
+        </a>
+        <a href="./components/Authentication/signup.php" class="bg-gradient-to-r from-[#B64870] to-[#4E0080] rounded-[8px] font-bold text-white px-5 py-2 hover:opacity-90 transition transform hover:scale-105">
+          Signup
+        </a>
+      </div>
+    <?php else: ?>
+      <div class="group relative">
+        <button class="flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold hover:bg-blue-200 transition">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-8 h-8 rounded-full">
+          <span><?php echo htmlspecialchars($userName); ?></span>
+          <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <!-- Dropdown -->
+        <div class="absolute right-0 hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-40 z-50">
+          <a href="./components/Pages/logout.php" class="block px-4 py-2 text-red-600 hover:bg-red-100 rounded-md">Logout</a>
+        </div>
+      </div>
+    <?php endif; ?>
+  </div>
+</nav>
