@@ -75,7 +75,9 @@ CREATE TABLE `cars` (
     FOREIGN KEY (`agent_id`) REFERENCES `agents`(`id`)  -- Foreign key relation with agents table
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+ALTER TABLE `cars` ADD COLUMN `location` VARCHAR(255) NOT NULL;
 -- Insert data into cars
+
 INSERT INTO `cars` (`agent_id`, `image`, `model`, `car_number`, `seats`, `rent`, `status`, `rental_start_date`, `rental_end_date`, `total_earnings`) 
 VALUES
 (1, 'car1.jpg', 'Toyota Corolla', 'ABC1234', 5, 2000.00, 'Available', NULL, NULL, 0.00),

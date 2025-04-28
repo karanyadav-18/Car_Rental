@@ -1,3 +1,15 @@
+<?php
+// session_start();
+// include('../common/connect.php');
+
+// Default values
+// $loggedIn = false;
+if (isset($_SESSION['customer_id'])) {
+    $loggedIn = true;
+    $customer_id = $_SESSION['customer_id'];
+}
+?>
+
 <!-- Navbar -->
 <nav class="flex items-center justify-between px-8 py-4 bg-white shadow-md">
   <!-- Logo -->
@@ -13,12 +25,12 @@
         <span class="group-hover:text-blue-600 transition-all duration-300">Dashboard</span>
         <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/booking.php" class="relative group text-gray-700 font-semibold">
-        <span class="group-hover:text-blue-600 transition-all duration-300">Bookings</span>
-        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
-      <a href="./components/Pages/payment.php" class="relative group text-gray-700 font-semibold">
-        <span class="group-hover:text-blue-600 transition-all duration-300">Payments</span>
+      <a href="./components/Pages/cars.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">Available Cars</span>
+        <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
+      <a href="./components/Pages/booking.php" class="relative group text-gray-700 font-semibold">
+        <span class="group-hover:text-blue-600 transition-all duration-300">My Bookings</span>
         <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
       <a href="./components/Pages/settings.php" class="relative group text-gray-700 font-semibold">
@@ -57,20 +69,33 @@
         </a>
       </div>
     <?php else: ?>
-      <div class="group relative">
-        <button class="flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold hover:bg-blue-200 transition">
+      <div class="relative">
+        <button id="userProfileBtn" class="flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold hover:bg-blue-200 transition">
           <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="w-8 h-8 rounded-full">
-          <span><?php echo htmlspecialchars($userName); ?></span>
-          <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
         </button>
 
         <!-- Dropdown -->
-        <div class="absolute right-0 hidden group-hover:block bg-white shadow-lg rounded-md mt-2 w-40 z-50">
+        <div id="dropdown" class="absolute right-0 hidden bg-white shadow-lg rounded-md mt-2 w-40 z-50">
           <a href="./components/Pages/logout.php" class="block px-4 py-2 text-red-600 hover:bg-red-100 rounded-md">Logout</a>
         </div>
       </div>
     <?php endif; ?>
   </div>
 </nav>
+
+<script>
+  // JavaScript to toggle dropdown visibility on click
+  const profileBtn = document.getElementById("userProfileBtn");
+  const dropdown = document.getElementById("dropdown");
+
+  profileBtn.addEventListener("click", () => {
+    dropdown.classList.toggle("hidden");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add("hidden");
+    }
+  });
+</script>

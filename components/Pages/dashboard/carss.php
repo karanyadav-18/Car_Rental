@@ -93,9 +93,7 @@ include('components/common/connect.php');
             <span class="text-2xl font-bold text-slate-800">₹<?php echo $row['rent']; ?></span>
             <span class="text-slate-600">/day</span>
           </div>
-          <button id="rent-<?php echo $row['id']; ?>" class="rent-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-sm">
-            Rent Car
-          </button>
+          <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded w-full btn-view-details" data-id="<?php echo $row['id']; ?>">View Details</button>
         </div>
       </div>
     </div>
@@ -104,31 +102,41 @@ include('components/common/connect.php');
       }
     ?>
   </div>
-
+<!-- Car Details Modal -->
+<div id="car-details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white w-full max-w-4xl rounded-lg shadow-lg overflow-y-auto max-h-[90vh]">
+    <div class="p-6 relative">
+      <button class="absolute top-3 right-3 text-gray-500 hover:text-gray-700" onclick="closeModal()">&times;</button>
+      <div id="car-details-content">
+        <!-- Car Details Load Here via AJAX -->
+      </div>
+    </div>
+  </div>
+</div>
   <div class="text-center mt-12 mb-12">
     <a href="./components/Pages/cars.php" class="inline-block bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-2 rounded-lg transition">
       View All Cars
     </a>
   </div>
-
-  <script>
-    $(document).on('click', '[id^=rent-]', function() {
-      var carId = $(this).attr('id').split('-')[1];
-      $.ajax({
-        url: "../../modal.php",
-        type: "POST",
-        data: { id: carId },
-        success: function(data) {
-          $(".info").html(data);
-          $("#book").removeClass("hidden");
-        }
-      });
+<script>
+$(document).ready(function(){
+    $(".btn-view-details").click(function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: "components/Pages/load_car_details.php", // create this file separately
+            method: "POST",
+            data: { car_id: id },
+            success: function(data){
+                $("#car-details-content").html(data);
+                $("#car-details-modal").removeClass('hidden');
+            }
+        });
     });
+});
 
-    function closeModal() {
-      $('#book').addClass('hidden');
-    }
-  </script>
-
+function closeModal() {
+    $("#car-details-modal").addClass('hidden');
+}
+</script>
 </body>
 </html>

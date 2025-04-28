@@ -113,6 +113,7 @@ $carsResult = mysqli_query($conn, "SELECT * FROM cars WHERE agent_id = $agent_id
                         <th>Number</th>
                         <th>Seats</th>
                         <th>Rent/Day</th>
+                        <th>Location</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -127,6 +128,7 @@ $carsResult = mysqli_query($conn, "SELECT * FROM cars WHERE agent_id = $agent_id
                         <td>{$row['car_number']}</td>
                         <td>{$row['seats']}</td>
                         <td>₹{$row['rent']}</td>
+                        <td>{$row['location']}</td>
                         <td>
                             <div class='d-flex justify-content-center gap-2 action-btns'>
                                 <button class='btn btn-outline-primary btn-sm edit2' id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#modal1'>
@@ -165,6 +167,7 @@ $carsResult = mysqli_query($conn, "SELECT * FROM cars WHERE agent_id = $agent_id
                 <div class="mb-3"><label>Car Number</label><input type="text" name="number_plate" class="form-control" required></div>
                 <div class="mb-3"><label>Seats</label><input type="number" name="seats" class="form-control" required></div>
                 <div class="mb-3"><label>Rent Per Day</label><input type="number" name="rent" class="form-control" required></div>
+                <div class="mb-3"><label>Location</label><input type="text" name="location" class="form-control" required></div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

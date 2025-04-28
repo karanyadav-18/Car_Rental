@@ -7,9 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
+<?php include '../common/navbar.php'; ?>
     <div class="flex h-screen">
-        <main class="flex-1 p-6 ml-64">
-        <?php include '../common/sidebar.php'; ?>
+        <main class="flex-1 p-6">
+       
             <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-xl font-semibold mb-4">Profile Settings</h2>
                 <div class="flex items-center gap-4 mb-6">
