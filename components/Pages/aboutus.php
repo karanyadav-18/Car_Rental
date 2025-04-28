@@ -1,10 +1,3 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-$loggedIn = isset($_SESSION['user']);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +7,7 @@ $loggedIn = isset($_SESSION['user']);
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-800">
-<?php include '../common/sidebar.php' ?>
+<?php include '../common/navbar.php' ?>
   <!-- About Us Section -->
   <section class="relative bg-cover bg-center bg-no-repeat py-8 text-white" style="background-image: url('../images/about.jpg');">
   <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay with 50% opacity -->
@@ -68,6 +61,7 @@ $loggedIn = isset($_SESSION['user']);
 
     </div>
   </section>
+  <?php include '../common/footer.php'; ?>
 
 </body>
 </html>

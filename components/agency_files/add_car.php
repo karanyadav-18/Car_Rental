@@ -8,13 +8,14 @@ $model = mysqli_real_escape_string($conn, $_POST["model"]);
 $number_plate = mysqli_real_escape_string($conn, $_POST["number_plate"]);
 $seats = mysqli_real_escape_string($conn, $_POST["seats"]);
 $rent = mysqli_real_escape_string($conn, $_POST["rent"]);
+$location = mysqli_real_escape_string($conn, $_POST["location"]);
 
 $filename = $_FILES["filetoupload"]["name"];
 $tempname = $_FILES["filetoupload"]["tmp_name"];
 $folder = "../uploads/" . $filename;
 move_uploaded_file($tempname, $folder);
 
-$sql = "insert into cars(agent_id, model, image, car_number, seats, rent) values ('$agent_id', '$model', '$filename', '$number_plate', '$seats', '$rent')";
+$sql = "insert into cars(agent_id, model, image, car_number, seats, rent,location) values ('$agent_id', '$model', '$filename', '$number_plate', '$seats', '$rent','$location')";
 
 $qry = mysqli_query($conn, $sql);
 if ($qry) {
