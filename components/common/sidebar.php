@@ -29,7 +29,7 @@ if (isset($_SESSION['customer_id'])) {
       <a href="./components/Pages/cars.php" class="relative group text-gray-700 font-semibold">
         <span class="group-hover:text-blue-600 transition-all duration-300">Available Cars</span>
         <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
-      <a href="./components/Pages/booking.php" class="relative group text-gray-700 font-semibold">
+      <a href="./components/Pages/mybooking.php" class="relative group text-gray-700 font-semibold">
         <span class="group-hover:text-blue-600 transition-all duration-300">My Bookings</span>
         <span class="absolute left-0 bottom-0 block w-full h-[2px] bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-all duration-300"></span>
       </a>
