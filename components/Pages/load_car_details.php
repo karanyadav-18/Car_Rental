@@ -19,12 +19,23 @@ if (isset($_POST['car_id'])) {
               <span class="bg-gray-200 px-3 py-1 rounded-full">Diesel</span>
               <span class="bg-gray-200 px-3 py-1 rounded-full"><?php echo $car['car_number']; ?></span>
             </div>
+
+            <!-- Added Location Information -->
+            <div class="mb-4">
+              <span class="bg-gray-200 px-3 py-1 rounded-full">Location: <?php echo $car['location']; ?></span>
+            </div>
+
             <div class="text-lg font-bold text-blue-700 mb-6">₹<?php echo $car['rent']; ?>/day</div>
             <p class="text-gray-600 mb-6">This car offers a comfortable ride and excellent fuel efficiency. Book now for your next trip!</p>
 
-            <form action="../../actions/booking.php" method="POST" id="bookingForm">
+            <!-- Booking Form -->
+            <form action="components/Pages/payment.php" method="POST" id="bookingForm">
               <input type="hidden" name="car_id" value="<?php echo $car['id']; ?>">
-              
+              <input type="hidden" name="car_model" value="<?php echo $car['model']; ?>">
+              <input type="hidden" name="car_image" value="<?php echo $car['image']; ?>">
+              <input type="hidden" name="car_rent" value="<?php echo $car['rent']; ?>">
+              <input type="hidden" name="location" value="<?php echo $car['location']; ?>">
+
               <div class="mb-4">
                 <label class="block text-gray-700 mb-2">Start Date</label>
                 <input type="date" name="start_date" id="start_date" class="w-full border border-gray-300 p-2 rounded" required min="<?php echo date('Y-m-d'); ?>">
