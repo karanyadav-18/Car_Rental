@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Payment Form -->
             <div class="w-2/3 pr-6">
                 <h2 class="text-2xl font-semibold mb-5">Payment Details</h2>
-                <form action="../actions/process_payment.php" method="POST">
+                <form action="../actions/process_payment.php" method="POST" id="paymentForm">
                     <!-- Hidden Fields for Car Data -->
                     <input type="hidden" name="car_id" value="<?php echo $car_id; ?>">
                     <input type="hidden" name="car_model" value="<?php echo $car_model; ?>">
@@ -48,42 +48,99 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="mb-4">
                         <label class="block text-gray-700">Card Number</label>
-                        <input type="text" name="card_number" class="w-full border px-4 py-2 rounded-lg mt-1" placeholder="1234 5678 9012 3456" required>
+                        <input 
+                            type="text" 
+                            name="card_number" 
+                            class="w-full border px-4 py-2 rounded-lg mt-1" 
+                            placeholder="1234567890123456" 
+                            required 
+                            pattern="\d{16}" 
+                            maxlength="16"
+                            title="Please enter a valid 16-digit card number"
+                        >
                     </div>
+
                     <div class="flex gap-4">
                         <div class="mb-4 w-1/2">
                             <label class="block text-gray-700">Expiry Date</label>
-                            <input type="text" name="expiry_date" class="w-full border px-4 py-2 rounded-lg mt-1" placeholder="MM/YY" required>
+                            <input 
+                                type="text" 
+                                name="expiry_date" 
+                                class="w-full border px-4 py-2 rounded-lg mt-1" 
+                                placeholder="MM/YY" 
+                                required 
+                                pattern="(0[1-9]|1[0-2])\/\d{2}" 
+                                title="Expiry date must be in MM/YY format"
+                            >
                         </div>
                         <div class="mb-4 w-1/2">
                             <label class="block text-gray-700">CVV</label>
-                            <input type="text" name="cvv" class="w-full border px-4 py-2 rounded-lg mt-1" placeholder="123" required>
+                            <input 
+                                type="text" 
+                                name="cvv" 
+                                class="w-full border px-4 py-2 rounded-lg mt-1" 
+                                placeholder="123" 
+                                required 
+                                pattern="\d{3}" 
+                                maxlength="3"
+                                title="CVV must be 3 digits"
+                            >
                         </div>
                     </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700">Cardholder Name</label>
-                        <input type="text" name="cardholder_name" class="w-full border px-4 py-2 rounded-lg mt-1" required>
+                        <input 
+                            type="text" 
+                            name="cardholder_name" 
+                            class="w-full border px-4 py-2 rounded-lg mt-1" 
+                            required
+                        >
                     </div>
-                    <hr>
+
+                    <hr class="my-6">
                     <h2 class="text-2xl font-semibold mb-5">Address Details</h2>
+
                     <div class="mb-4">
                         <label class="block text-gray-700">Address</label>
-                        <input type="text" name="address" class="w-full border px-4 py-2 rounded-lg mt-1" required>
+                        <input 
+                            type="text" 
+                            name="address" 
+                            class="w-full border px-4 py-2 rounded-lg mt-1" 
+                            required
+                        >
                     </div>
+
                     <div class="flex gap-4">
                         <div class="mb-4 w-1/2">
                             <label class="block text-gray-700">City</label>
-                            <input type="text" name="city" class="w-full border px-4 py-2 rounded-lg mt-1" placeholder="" required>
+                            <input 
+                                type="text" 
+                                name="city" 
+                                class="w-full border px-4 py-2 rounded-lg mt-1" 
+                                required
+                            >
                         </div>
                         <div class="mb-4 w-1/2">
                             <label class="block text-gray-700">Zip</label>
-                            <input type="text" name="zip" class="w-full border px-4 py-2 rounded-lg mt-1" placeholder="123321" required>
+                            <input 
+                                type="text" 
+                                name="zip" 
+                                class="w-full border px-4 py-2 rounded-lg mt-1" 
+                                pattern="\d{5,6}" 
+                                title="Please enter a 5 or 6 digit zip code"
+                                required
+                            >
                         </div>
                     </div>
+
                     <div class="bg-blue-100 text-blue-600 px-4 py-3 rounded-lg mb-4 flex items-center">
                         <span class="mr-2">🔒</span> Your payment information is encrypted and secure
                     </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">Pay ₹<?php echo $total_price; ?></button>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold">
+                        Pay ₹<?php echo $total_price; ?>
+                    </button>
                 </form>
             </div>
 
@@ -102,5 +159,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
+
+    <!-- JavaScript Validation -->
+    <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        const cardNumber = document.querySelector('input[name="card_number"]').value;
+        const cvv = document.querySelector('input[name="cvv"]').value;
+        const expiryDate = document.querySelector('input[name="expiry_date"]').value;
+
+        if (!/^\d{16}$/.test(cardNumber)) {
+            alert('Please enter a valid 16-digit card number.');
+            event.preventDefault();
+            return;
+        }
+
+        if (!/^\d{3}$/.test(cvv)) {
+            alert('Please enter a valid 3-digit CVV.');
+            event.preventDefault();
+            return;
+        }
+
+        if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+            alert('Please enter expiry date in MM/YY format.');
+            event.preventDefault();
+            return;
+        }
+    });
+    </script>
+
 </body>
 </html>

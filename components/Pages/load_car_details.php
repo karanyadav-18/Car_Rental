@@ -10,7 +10,8 @@ if (isset($_POST['car_id'])) {
         ?>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <img src="../uploads/<?php echo $car['image']; ?>" alt="Car" class="w-full h-64 object-cover rounded">
+            <!-- Corrected Image Path -->
+            <img src="/Car_Rental/Car_Rental/components/uploads/<?php echo $car['image']; ?>" alt="Car" class="w-full h-64 object-cover rounded">
           </div>
           <div>
             <h2 class="text-2xl font-bold mb-4"><?php echo $car['model']; ?></h2>
@@ -20,7 +21,6 @@ if (isset($_POST['car_id'])) {
               <span class="bg-gray-200 px-3 py-1 rounded-full"><?php echo $car['car_number']; ?></span>
             </div>
 
-            <!-- Added Location Information -->
             <div class="mb-4">
               <span class="bg-gray-200 px-3 py-1 rounded-full">Location: <?php echo $car['location']; ?></span>
             </div>
@@ -28,12 +28,11 @@ if (isset($_POST['car_id'])) {
             <div class="text-lg font-bold text-blue-700 mb-6">₹<?php echo $car['rent']; ?>/day</div>
             <p class="text-gray-600 mb-6">This car offers a comfortable ride and excellent fuel efficiency. Book now for your next trip!</p>
 
-            <!-- Booking Form -->
-            <form action="components/Pages/payment.php" method="POST" id="bookingForm">
+            <form action="/Car_Rental/Car_Rental/components/Pages/payment.php" method="POST" id="bookingForm">
               <input type="hidden" name="car_id" value="<?php echo $car['id']; ?>">
               <input type="hidden" name="car_model" value="<?php echo $car['model']; ?>">
               <input type="hidden" name="car_image" value="<?php echo $car['image']; ?>">
-              <input type="hidden" name="car_rent" value="<?php echo $car['rent']; ?>">
+              <input type="hidden" name="car_rent" id="car_rent" value="<?php echo $car['rent']; ?>">
               <input type="hidden" name="location" value="<?php echo $car['location']; ?>">
 
               <div class="mb-4">
@@ -48,30 +47,26 @@ if (isset($_POST['car_id'])) {
 
               <div class="mb-6">
                 <label class="block text-gray-700 mb-2">Total Price (₹)</label>
-                <input type="text" name="total_price" id="total_price" class="w-full border border-gray-300 p-2 rounded bg-gray-100" readonly value="0">
+                <input type="text" name="total_price" id="total_price" class="w-full border border-gray-300 p-2 rounded bg-gray-100" readonly>
               </div>
 
               <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">Book Now</button>
             </form>
-
-            <script>
-              const rentPerDay = <?php echo $car['rent']; ?>;
-              const numberOfDaysInput = document.getElementById('number_of_days');
-              const totalPriceInput = document.getElementById('total_price');
-
-              function updatePrice() {
-                  const days = parseInt(numberOfDaysInput.value) || 0;
-                  totalPriceInput.value = rentPerDay * days;
-              }
-
-              numberOfDaysInput.addEventListener('input', updatePrice);
-
-              // Page load pe ek baar calculate kara dena
-              updatePrice();
-            </script>
-
           </div>
         </div>
+
+        <script>
+          $(document).ready(function() {
+            var rentPerDay = <?php echo $car['rent']; ?>;
+            function updateTotalPrice() {
+              var days = parseInt($("#number_of_days").val()) || 0;
+              $("#total_price").val(rentPerDay * days);
+            }
+
+            $("#number_of_days").on('input', updateTotalPrice);
+            updateTotalPrice();
+          });
+        </script>
         <?php
     } else {
         echo "<div class='text-center text-gray-600'>Car not found.</div>";

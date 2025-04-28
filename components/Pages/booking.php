@@ -43,7 +43,9 @@ if (isset($_SESSION['booking_details'])) {
             <!-- Confirmation Header -->
             <div class="text-center mb-8">
                 <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" />
+                    </svg>
                 </div>
                 <h1 class="text-3xl font-semibold text-gray-800 mb-2">Booking Confirmed!</h1>
                 <p class="text-gray-600">Thank you for your booking. Your reservation has been confirmed.</p>
@@ -69,21 +71,27 @@ if (isset($_SESSION['booking_details'])) {
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Booking Details</h3>
                         <ul class="space-y-4">
                             <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" />
+                                </svg>
                                 <div>
                                     <p class="font-medium text-gray-700">Pick-up Date</p>
                                     <p class="text-gray-600"><?php echo date('l, F j, Y', strtotime($start_date)); ?></p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" />
+                                </svg>
                                 <div>
                                     <p class="font-medium text-gray-700">Return Date</p>
                                     <p class="text-gray-600"><?php echo date('l, F j, Y', strtotime($start_date . ' + ' . $number_of_days . ' days')); ?></p>
                                 </div>
                             </li>
                             <li class="flex items-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-800 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3z" />
+                                </svg>
                                 <div>
                                     <p class="font-medium text-gray-700">Location</p>
                                     <p class="text-gray-600"><?php echo $location; ?></p>
@@ -107,15 +115,21 @@ if (isset($_SESSION['booking_details'])) {
 
                         <ul class="space-y-2">
                             <li class="flex items-center text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" />
+                                </svg>
                                 <span>Seats: 4</span>
                             </li>
                             <li class="flex items-center text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" />
+                                </svg>
                                 <span>Fuel Type: Petrol</span>
                             </li>
                             <li class="flex items-center text-gray-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12l5 5L20 7" />
+                                </svg>
                                 <span>Transmission: Manual</span>
                             </li>
                         </ul>
@@ -144,9 +158,10 @@ if (isset($_SESSION['booking_details'])) {
 
                 <!-- Action Buttons -->
                 <div class="flex gap-4 mt-8">
-                    <a href="/" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center">Return to Home</a>
-                    <a href="/cars" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold text-center">Browse More Cars</a>
+                    <a href="../../index.php" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold text-center">Return to Home</a>
+                    <a href="cars.php" class="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold text-center">Browse More Cars</a>
                 </div>
+
             </div>
         </div>
     </div>

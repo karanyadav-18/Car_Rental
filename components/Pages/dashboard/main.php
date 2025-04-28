@@ -27,7 +27,7 @@ include('components/common/connect.php');
       100% { transform: translateX(0); }
     }
     .slide-in {
-      animation: slideIn 1s ease-out forwards;
+      animation: slideIn 0.5s ease-out forwards; /* Faster sliding animation */
     }
   </style>
 </head>
@@ -46,10 +46,51 @@ include('components/common/connect.php');
 
     <div class="container mx-auto px-4 relative z-10 py-16 md:py-24">
       <div class="max-w-3xl">
-        <!-- Main Title -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 fade-in">
+        
+        <!-- Main Title (Animated Changing Text) -->
+        <h1 id="changing-text" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 opacity-0 translate-x-0 transition-all duration-500">
           Find Your Perfect Ride
         </h1>
+
+        <script>
+          const texts = [
+            "Find Your Perfect Ride",
+            "Rent a Car for Every Journey",
+            "Luxury Cars at Affordable Prices",
+            "City Drives to Road Trips - We Have It All",
+            "Smooth Rides, Unbeatable Deals"
+          ];
+
+          let index = 0;
+          const textElement = document.getElementById('changing-text');
+
+          function changeText() {
+            // Start by sliding out
+            textElement.classList.remove('opacity-100', 'translate-x-0');
+            textElement.classList.add('opacity-0', 'translate-x-full');
+
+            setTimeout(() => {
+              // Change text after fade out
+              textElement.innerText = texts[index];
+              // Then fade in
+              textElement.classList.remove('translate-x-full');
+              textElement.classList.add('opacity-100', 'translate-x-0');
+              
+              index = (index + 1) % texts.length; // Loop back
+            }, 500); // Shorter delay for smoother transition
+          }
+
+          // Initial load (change immediately after page load)
+          setTimeout(() => {
+            textElement.classList.remove('opacity-0', 'translate-x-0');
+            textElement.classList.add('opacity-100', 'translate-x-0');
+          }, 100); // Small delay to avoid glitch
+
+          // Start text change after 0.5 second and change every 3 seconds
+          setTimeout(changeText, 500); // Start the first change
+          setInterval(changeText, 3000); // Repeat every 3 seconds
+        </script>
+
         <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl fade-in delay-200">
           Discover a wide range of vehicles, from economy to luxury. Get the car that suits your needs for the journey ahead.
         </p>
@@ -88,6 +129,7 @@ include('components/common/connect.php');
             <span class="text-slate-200">24/7 Support</span>
           </div>
         </div>
+        
       </div>
     </div>
   </section>
