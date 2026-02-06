@@ -45,7 +45,7 @@
             <input type="checkbox" name="remember" class="mr-1">
             Remember me
           </label>
-          <a href="forgot-password.php" class="text-blue-600 text-sm">Forgot password?</a>
+          <!-- <a href="forgot-password.php" class="text-blue-600 text-sm">Forgot password?</a> -->
         </div>
 
         <div class="d-flex align-items-center justify-content-between mb-2">
